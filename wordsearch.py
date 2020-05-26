@@ -47,10 +47,8 @@ class WordDictionary:
     def search(self, word: str) -> bool:
         # deepSearch recursively searches for the provided word
         def deepSearch(word: str, index: int, node: TrieNode) -> bool:
-            if node.full_word and index == len(word):
-                return True
-            elif index == len(word):
-                return False
+            if index == len(word):
+                return node.full_word
 
             for child in node.children:
                 if (child.char == word[index] or word[index] == ".") and deepSearch(word, index + 1, child):
